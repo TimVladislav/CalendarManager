@@ -1,0 +1,6 @@
+<% if @tasks %>
+  <% @tasks.each do |t| %>
+    <p><%= t.title %></p>
+    <p><%= t.owner %></p>
+  <% end %>
+<% end %>

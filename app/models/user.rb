@@ -7,4 +7,6 @@ class User < ActiveRecord::Base
           :rememberable,
           :trackable,
           :validatable
+
+  has_and_belongs_to_many :tasks
 end
