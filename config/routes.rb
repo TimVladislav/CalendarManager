@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   root 'persons#index'
   get  'persons/index', as: 'user_root'
-  resources :tasks
+  resources :tasks do
+    post :share, on: :member
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

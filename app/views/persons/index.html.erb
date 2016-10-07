@@ -1,6 +1,17 @@
 <% if @tasks %>
+  <%= link_to 'Add task', new_task_path %>
+  <h3>Your tasks:</h3>
   <% @tasks.each do |t| %>
-    <p><%= t.title %></p>
-    <p><%= t.owner %></p>
+    <div class="task col-sm-2">
+      <p class="task-title"><%= t.title %></p>
+      <p class="task-time"><%= t.dt %></p>
+      <%= link_to 'show', task_path(t) %>
+      <% if t.owner == current_user.email %>
+        <%= link_to 'edit', edit_task_path(t) %>
+        <%= link_to 'delete', task_path(t), method: :delete, data: {confirm: 'Вы уверены, что хотите удалить эту задачу?'} %>
+      <% else %>
+        <p>Поделился: <%= t.owner %></p>
+      <% end %>
+    </div>
   <% end %>
 <% end %>

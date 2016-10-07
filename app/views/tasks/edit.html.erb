@@ -1,0 +1,10 @@
+<div class="container">
+  <h2>Редактирование задачи</h2>
+  <%= form_for :task, url: task_path(@task), method: :patch do |f| %>
+    <%= render 'form' %>
+    <div class="form-group">
+      <%= f.submit 'Update Task', :class => "form-control btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+
