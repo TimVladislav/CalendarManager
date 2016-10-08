@@ -22,6 +22,7 @@
                 <ul class="nav navbar-nav">
                     <li></li>
                 </ul>
+                <a href="/persons/profile">
                 <div class="auth">
                     <% if user_signed_in? %>
                        <!-- TODO: profile avatar
@@ -33,6 +34,7 @@
                         <%= link_to 'Зарегистрироваться', new_user_registration_path %>
                     <% end %>
                 </div>
+                </a>
             </div>
             <!--/.nav-collapse -->
         </div>

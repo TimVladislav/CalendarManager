@@ -1,8 +1,31 @@
 <div class="container">
-  <h1>
-    <% if (@user.name) %>
-      <p><%= @user.name %></p>
-    <% else %>
-      <p><%= @user.email %></p>
-    <% end %>
-  </h1>
+  <div class="col-sm-4">
+    <div class="user-img">
+      <% if !(@user.photo) %>
+        <img src="<%= @user.photo %>">
+      <% else %>
+        <img src="/default.png">
+      <% end %>
+    </div>
+    <%= link_to 'Редактировать профиль', user_root_path %>
+  </div>
+  <div class="col-sm-8">
+    <h1>Your profile</h1><br />
+    <dl class="dl-horizontal">
+      <dt>First name:</dt>
+      <dd><%= @user.name %></dd>
+    </dl>
+    <dl class="dl-horizontal">
+      <dt>Second name:</dt>
+      <dd><%= @user.second_name %></dd>
+    </dl>
+    <dl class="dl-horizontal">
+      <dt>Birthday:</dt>
+      <dd><%= @user.birthday %></dd>
+    </dl>
+    <dl class="dl-horizontal">
+      <dt>E-mail:</dt>
+      <dd><%= @user.email %></dd>
+    </dl>
+  </div>
+</div>

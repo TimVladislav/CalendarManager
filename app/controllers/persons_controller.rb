@@ -7,6 +7,10 @@ class PersonsController < ApplicationController
   def index
     @tasks = current_user.tasks
   end
+  def edit
+  end
+  def update
+  end
 
   private
 
