@@ -12,9 +12,17 @@
     <dt>Date:</dt>
     <dd><%= @task.dt %></dd>
   </dl>
-<%= form_for :share,url: share_task_path do |t| %>
-    <input type="text" name="email" id="" value="" class="form control" placeholder="e-mail пользователя" />
-    <input type="submit" name="" id="" value="Поделиться событием" />
-<% end %>
+  <% if current_user.email == @task.owner %>
+    <%= form_for :share,url: share_task_path do |t| %>
+      <input type="text" name="email" id="" value="" class="form control" placeholder="e-mail пользователя" />
+      <input type="submit" name="" id="" value="Поделиться событием" />
+    <% end %>
+    <br />
+  <%= link_to 'Редактировать', edit_task_path(@task) %>
+  <%= link_to 'Удалить', task_path(@task), method: :delete, data: {confirm: 'Вы уверены, что хотите удалить эту задачу'}  %>
+  <% else %>
+    <p>Поделился: <%= @task.owner %></p>
+  <% end %><br />
+  <%= link_to 'Вернуться', user_root_path %>
 </div>
 

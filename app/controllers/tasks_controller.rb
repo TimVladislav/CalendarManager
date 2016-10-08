@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
- #before_filter :user_signed
+  before_filter :user_signed
   before_action :find_task_by_id, only: [:show, :edit, :update, :destroy]
+  before_action :owner , only: [:edit, :update]
   def show
 
   end
@@ -47,10 +48,18 @@ class TasksController < ApplicationController
   end
 
   def user_signed
-    user_signed_in? unless redirect_to 'root'
+    if !user_signed_in?
+      redirect_to '/users/sign_in'
+    end
   end
 
   def find_task_by_id
     @task = Task.find(params[:id])
+  end
+
+  def owner
+    if !(@task.owner == current_user.email)
+      redirect_to @task
+    end
   end
 end

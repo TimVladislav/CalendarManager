@@ -1,3 +1,8 @@
-<h1>Persons#profile</h1>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<div class="container">
+  <h1>
+    <% if (@user.name) %>
+      <p><%= @user.name %></p>
+    <% else %>
+      <p><%= @user.email %></p>
+    <% end %>
+  </h1>
