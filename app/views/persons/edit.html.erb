@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="col-sm-4">
+    <div class="user-img">
+      <% if !(current_user.photo.length < 1) %>
+        <img class="profile-photo" src="<%= current_user.photo %>">
+      <% else %>
+        <img class="profile-photo" src="/default.png">
+      <% end %>
+    </div>
+  </div>
+  <div class="col-sm-8">
+    <h1>Edit profile</h1><br />
+    <%= form_for :user, url: user_root_path, method: :patch do |f| %>
+      <div class="form-group">
+        <%= label_tag(:user_name, "Name:", class: "col-sm-2 control-label") %>
+        <div class="col-sm-10">
+          <%= text_field(:user, :name, class: "form-control", value: current_user.name ) %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= label_tag(:user_second_name, "Second name:", class: "col-sm-2 control-label") %>
+        <div class="col-sm-10">
+          <%= text_field(:user, :second_name, class: "form-control", value: current_user.second_name ) %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= label_tag(:user_birthday, "Birthday:", class: "col-sm-2 control-label") %>
+        <div class="col-sm-10">
+          <%= text_field(:user, :birthday, class: "form-control", value: current_user.birthday ) %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= label_tag(:user_email, "E-mail:", class: "col-sm-2 control-label")  %>
+        <div class="col-sm-10">
+          <%= current_user.email %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.submit 'Update profile', :class => "form-control btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,13 +1,13 @@
 <div class="container">
   <div class="col-sm-4">
     <div class="user-img">
-      <% if !(@user.photo) %>
-        <img src="<%= @user.photo %>">
+      <% if !(@user.photo.length < 1) %>
+        <img class="profile-photo" src="<%= @user.photo %>">
       <% else %>
-        <img src="/default.png">
+        <img class="profile-photo" src="/default.png">
       <% end %>
     </div>
-    <%= link_to 'Редактировать профиль', user_root_path %>
+    <a href="/persons/<%= current_user.id %>/edit"> Редактировать профиль </a>
   </div>
   <div class="col-sm-8">
     <h1>Your profile</h1><br />
@@ -27,5 +27,6 @@
       <dt>E-mail:</dt>
       <dd><%= @user.email %></dd>
     </dl>
+
   </div>
 </div>

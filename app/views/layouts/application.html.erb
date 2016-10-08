@@ -20,13 +20,18 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li></li>
+                    <li><%= link_to 'My tasks', user_root_path %></li>
                 </ul>
                 <a href="/persons/profile">
                 <div class="auth">
                     <% if user_signed_in? %>
                        <!-- TODO: profile avatar
                        <img src=" current_user.picture " alt="" />-->
+                        <% if (current_user.photo.length > 1) %>
+                          <img class="nav-image" src="<%= current_user.photo %>">
+                        <% else %>
+                          <img class="nav-image" src="/default.png">
+                        <% end %>
                         <span><%= current_user.email %></span>
                         <%= link_to 'Выйти', destroy_user_session_path, :method => :delete %>
                     <% else %>
