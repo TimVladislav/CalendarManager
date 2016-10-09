@@ -3,7 +3,10 @@ class TasksController < ApplicationController
   before_action :find_task_by_id, only: [:show, :edit, :update, :destroy]
   before_action :owner , only: [:edit, :update]
   def show
-
+    @pos = Position.where("task_id = #{@task.id} && user_id = #{current_user.id}").first
+    if @pos.isnew
+      @pos.update(isnew: 0)
+    end
   end
   def new
     @tast = Task.new
@@ -15,7 +18,8 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.owner = current_user.email
     if @task.save
-      current_user.tasks << @task
+      #current_user.tasks << @task
+      Position.create(task_id: @task.id, user_id: current_user.id, isnew: 0)
       redirect_to @task
     else
       render 'edit'
@@ -29,6 +33,9 @@ class TasksController < ApplicationController
     end
   end
   def destroy
+    Position.where("task_id = #{@task.id}").each do |p|
+      p.destroy
+    end
     @task.destroy
     redirect_to '/'
   end
@@ -36,7 +43,8 @@ class TasksController < ApplicationController
     @u_share = params[:email]
     @u_task = params[:id]
     if @u_share_id = User.where("email = \"#{@u_share}\"").first
-      @u_share_id.tasks << Task.where("id = #{@u_task}")
+      #@u_share_id.tasks << Task.where("id = #{@u_task}")
+      Position.create(task_id: @u_task, user_id: @u_share_id.id, isnew: 1)
     end
     redirect_to '/'
   end

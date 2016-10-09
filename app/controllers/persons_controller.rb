@@ -5,7 +5,7 @@ class PersonsController < ApplicationController
     @user = current_user
   end
   def index
-    @tasks = current_user.tasks
+    @tasks = Position.where("user_id = #{current_user.id}")
   end
   def edit
   end

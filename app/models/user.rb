@@ -9,7 +9,9 @@ class User < ActiveRecord::Base
           :trackable,
           :validatable
 
-  has_and_belongs_to_many :tasks
+  has_many :newtasks
+  has_many :positions
+  has_many :tasks, through: :positions
 
   validates :email,
     uniqueness: true

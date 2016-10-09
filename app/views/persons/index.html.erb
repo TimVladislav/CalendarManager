@@ -3,15 +3,19 @@
   <%= link_to 'Add task', new_task_path %>
   <h3>Your tasks:</h3>
   <% @tasks.each do |t| %>
-    <div class="task col-sm-2">
-      <p class="task-title"><%= t.title %></p>
-      <p class="task-time"><%= t.dt %></p>
-      <%= link_to 'show', task_path(t) %>
-      <% if t.owner == current_user.email %>
-        <%= link_to 'edit', edit_task_path(t) %>
-        <%= link_to 'delete', task_path(t), method: :delete, data: {confirm: 'Вы уверены, что хотите удалить эту задачу?'} %>
+    <% if Position.find(t.id).isnew %>
+      <div class="task new col-sm-2">
+    <% else %>
+      <div class="task col-sm-2">
+    <% end %>
+      <p class="task-title"><%= Task.find(t.task_id).title %></p>
+      <p class="task-time"><%= Task.find(t.task_id).dt %></p>
+      <%= link_to 'show', task_path(t.task_id) %>
+      <% if Task.find(t.task_id).owner == current_user.email %>
+        <%= link_to 'edit', edit_task_path(t.task_id) %>
+        <%= link_to 'delete', task_path(t.task_id), method: :delete, data: {confirm: 'Вы уверены, что хотите удалить эту задачу?'} %>
       <% else %>
-        <p>Поделился: <%= t.owner %></p>
+        <p>Поделился: <%= Task.find(t.task_id).owner %></p>
       <% end %>
     </div>
   <% end %>
