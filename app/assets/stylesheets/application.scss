@@ -1,5 +1,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+html {
+    min-height: 100%;
+}
 .clearfix {
     clear: both;
     margin-top: 50px;
@@ -12,9 +15,26 @@
     }
 }
 body {
+  min-height: 100%;
   padding-top: 40px;
   padding-bottom: 40px;
-  background-color: #eee;
+  background: url(/Layer-1.png) no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+h2,
+h3,
+dt,
+dd,
+p,
+label {
+    color: aliceblue;
+}
+
+.con {
+    padding: 20px;
+    background: rgba(0,0,0,0.2);
+    min-height: 80% !important;
 }
 
 .form-signin {
@@ -62,8 +82,9 @@ body {
     margin-bottom: -1px;
 }
 .task {
-  border: solid 1px #ccc;
-  background-color: #ddd;
+  border: solid 1px #fff;
+  margin: 5px;
+  background-color: rgba(33, 33, 33, 0.5);
   height: 140px;
   display: block;
 }
@@ -80,5 +101,5 @@ body {
   border-radius: 10%;
 }
 .new {
-  background: #71E2BF !important;
+  background: rgba(69, 199, 52, 0.5) !important;
 }
