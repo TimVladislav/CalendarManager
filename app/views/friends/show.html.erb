@@ -1,0 +1,31 @@
+<div class="container con">
+  <div class="col-sm-4">
+    <div class="user-img">
+      <% if !(@u_friend.photo.length < 1) %>
+        <img class="profile-photo" src="<%= @u_friend.photo %>">
+      <% else %>
+        <img class="profile-photo" src="/default.png">
+      <% end %>
+    </div>
+  </div>
+  <div class="col-sm-8">
+    <h1>My friend's profile</h1><br />
+    <dl class="dl-horizontal">
+      <dt>First name:</dt>
+      <dd><%= @u_friend.name %></dd>
+    </dl>
+    <dl class="dl-horizontal">
+      <dt>Second name:</dt>
+      <dd><%= @u_friend.second_name %></dd>
+    </dl>
+    <dl class="dl-horizontal">
+      <dt>Birthday:</dt>
+      <dd><%= @u_friend.birthday %></dd>
+    </dl>
+    <dl class="dl-horizontal">
+      <dt>E-mail:</dt>
+      <dd><%= @u_friend.email %></dd>
+    </dl>
+
+  </div>
+</div>

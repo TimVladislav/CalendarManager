@@ -22,12 +22,14 @@ body {
   background-size: cover;
   background-attachment: fixed;
 }
+h1,
 h2,
 h3,
 dt,
 dd,
 p,
-label {
+label,
+tr {
     color: aliceblue;
 }
 

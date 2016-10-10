@@ -1,0 +1,27 @@
+<div class="container con">
+    <table id="friendsTable" class="table table-bordered tablesorter responsive">
+  <thead>
+  <tr>
+    <th>ФИО</th>
+    <th>Дата рождения</th>
+    <th>e-mail</th>
+    <th><%= link_to 'Add', new_friend_path %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @friends.each do |friend|%>
+    <tr>
+      <td><%= User.find(friend.friend_id).name %></td>
+      <td><%= User.find(friend.friend_id).birthday %></td>
+      <td><%= User.find(friend.friend_id).email %></td>
+      
+      <td>
+        <%= link_to 'Show', friend_path(friend) %>
+        <%= link_to 'Delete', friend_path(friend), method: :delete, data: {confirm: 'Вы уверены, что хотите удалить строку?' } %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+
+</table>
+</div>

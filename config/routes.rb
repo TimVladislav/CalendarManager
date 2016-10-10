@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     post :share, on: :member
   end
   resources :persons, only: [:edit, :update]
+  resources :friends, on: :member
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

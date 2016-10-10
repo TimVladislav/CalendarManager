@@ -1,0 +1,9 @@
+<div class="container con">
+  <h2>New friend</h2>
+  <%= form_for :friend, url: friends_path do |f| %>
+    <%= render 'form' %>
+    <div class="form-group">
+      <%= f.submit 'Add friend', :class => "form-control btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
