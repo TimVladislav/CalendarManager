@@ -1,17 +1,35 @@
 <div class="container con">
   <h2>Task: <%= @task.title %></h2>
-  <dl class="dl-horizontal">
-    <dt>Task name:</dt>
-    <dd><%= @task.title %></dd>
-  </dl>
-  <dl class="dl-horizontal">
-    <dt>Description:</dt>
-    <dd><%= @task.description %></dd>
-  </dl>
-  <dl class="dl-horizontal">
-    <dt>Date:</dt>
-    <dd><%= @task.dt %></dd>
-  </dl>
+  <div class="row">
+    <dl class="dl-horizontal">
+        <div class="col s2"> <dt><span class="property">Title:</span></dt> </div>
+        <div class="col s10">
+            <dd>
+                <%= @task.title %>
+            </dd>
+        </div>
+    </dl>
+  </div>
+  <div class="row">
+    <dl class="dl-horizontal">
+        <div class="col s2"> <dt><span class="property">Description:</span></dt> </div>
+        <div class="col s10">
+            <dd>
+                <%= @task.description %>
+            </dd>
+        </div>
+    </dl>
+  </div>
+  <div class="row">
+    <dl class="dl-horizontal">
+        <div class="col s2"> <dt><span class="property">Date:</span></dt> </div>
+        <div class="col s10">
+            <dd>
+                <%= @task.dt %>
+            </dd>
+        </div>
+    </dl>
+  </div>
   <% if current_user.email == @task.owner %>
     <%= form_for :share,url: share_task_path do |t| %>
       <input type="text" name="email" id="" value="" class="form control" placeholder="e-mail пользователя" />

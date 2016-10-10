@@ -1,23 +1,33 @@
 <div class="container con">
 <% if @tasks %>
-  <%= link_to 'Add task', new_task_path %>
+  <%= link_to 'add', new_task_path, class: "btn-floating btn-large waves-effect waves-light add-task" %>
   <h3>Your tasks:</h3>
+  <div class="row">
   <% @tasks.each do |t| %>
-    <% if Position.find(t.id).isnew %>
-      <div class="task new col-sm-2">
-    <% else %>
-      <div class="task col-sm-2">
-    <% end %>
-      <p class="task-title"><%= Task.find(t.task_id).title %></p>
-      <p class="task-time"><%= Task.find(t.task_id).dt %></p>
-      <%= link_to 'show', task_path(t.task_id) %>
-      <% if Task.find(t.task_id).owner == current_user.email %>
-        <%= link_to 'edit', edit_task_path(t.task_id) %>
-        <%= link_to 'delete', task_path(t.task_id), method: :delete, data: {confirm: 'Вы уверены, что хотите удалить эту задачу?'} %>
-      <% else %>
-        <p>Поделился: <%= Task.find(t.task_id).owner %></p>
-      <% end %>
-    </div>
+    <div class="col s12 m6">
+        <% if Position.find(t.id).isnew %>
+            <div class="card green darken-3 darken-1">
+        <% else %>
+           <div class="card blue-grey darken-1">
+        <% end %>
+            <div class="card-content white-text">
+                <span class="card-title"><%= Task.find(t.task_id).title %></span>
+                <p><%= Task.find(t.task_id).description %></p>
+                <p><%= Task.find(t.task_id).dt %></p>
+                <% if !(Task.find(t.task_id).owner == current_user.email) %>
+                    <p>Поделился: <%= Task.find(t.task_id).owner %></p>
+                <% end %>
+            </div>
+            <div class="card-action">
+                <%= link_to 'show', task_path(t.task_id) %>
+                <% if Task.find(t.task_id).owner == current_user.email %>
+                    <%= link_to 'edit', edit_task_path(t.task_id) %>
+                    <%= link_to 'delete', task_path(t.task_id), method: :delete, data: {confirm: 'Вы уверены, что хотите удалить эту задачу?'} %>
+                <% end %>
+            </div>
+          </div>
+        </div>
   <% end %>
+</div>
 <% end %>
 </div>

@@ -1,9 +1,9 @@
 <div class="container con">
-  <h2>Новая задача</h2>
-  <%= form_for :task, url: tasks_path do |f| %>
-    <%= render 'form' %>
-    <div class="form-group">
-      <%= f.submit 'Save Task', :class => "form-control btn btn-primary" %>
-    </div>
-  <% end %>
+    <h2>Новая задача</h2>
+    <%= form_for :task, url: tasks_path do |f| %>
+        <%= render 'form' %>
+        <div class="form-group">
+            <%= f.submit 'Save Task', :class => "form-control btn btn-primary" %>
+        </div>
+    <% end %>
 </div>

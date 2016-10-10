@@ -1,32 +1,34 @@
 <div class="container con">
-  <div class="col-sm-4">
-    <div class="user-img">
-      <% if !(@user.photo.length < 1) %>
-        <img class="profile-photo" src="<%= @user.photo %>">
-      <% else %>
-        <img class="profile-photo" src="/default.png">
-      <% end %>
+    <div class="row">
+        <div class="col-sm-4 col s4">
+            <div class="user-img">
+                <% if !(@user.photo.length < 1) %> <img class="profile-photo" src="<%= @user.photo %>">
+                    <% else %> <img class="profile-photo" src="/default.png">
+                        <% end %>
+            </div> <a href="/persons/<%= current_user.id %>/edit"> Редактировать профиль </a> </div>
+        <div class="col-sm-8 col s8">
+            <h1>Your profile</h1>
+            <br />
+            <dl class="dl-horizontal"> <dt>First name:</dt>
+                <dd>
+                    <%= @user.name %>
+                </dd>
+            </dl>
+            <dl class="dl-horizontal"> <dt>Second name:</dt>
+                <dd>
+                    <%= @user.second_name %>
+                </dd>
+            </dl>
+            <dl class="dl-horizontal"> <dt>Birthday:</dt>
+                <dd>
+                    <%= @user.birthday %>
+                </dd>
+            </dl>
+            <dl class="dl-horizontal"> <dt>E-mail:</dt>
+                <dd>
+                    <%= @user.email %>
+                </dd>
+            </dl>
+        </div>
     </div>
-    <a href="/persons/<%= current_user.id %>/edit"> Редактировать профиль </a>
-  </div>
-  <div class="col-sm-8">
-    <h1>Your profile</h1><br />
-    <dl class="dl-horizontal">
-      <dt>First name:</dt>
-      <dd><%= @user.name %></dd>
-    </dl>
-    <dl class="dl-horizontal">
-      <dt>Second name:</dt>
-      <dd><%= @user.second_name %></dd>
-    </dl>
-    <dl class="dl-horizontal">
-      <dt>Birthday:</dt>
-      <dd><%= @user.birthday %></dd>
-    </dl>
-    <dl class="dl-horizontal">
-      <dt>E-mail:</dt>
-      <dd><%= @user.email %></dd>
-    </dl>
-
-  </div>
 </div>

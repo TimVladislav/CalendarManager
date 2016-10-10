@@ -1,6 +1,8 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
+//@import "bootstrap-sprockets";
+//@import "bootstrap";
+@import "materialize";
 html {
+    padding-top: 0;
     min-height: 100%;
 }
 .clearfix {
@@ -15,6 +17,7 @@ html {
     }
 }
 body {
+  padding-top: 0px !important;
   min-height: 100%;
   padding-top: 40px;
   padding-bottom: 40px;
@@ -99,9 +102,12 @@ tr {
   border-radius: 5%;
 }
 .nav-image {
-  height:40px;
+  height:64px;
   border-radius: 10%;
 }
 .new {
   background: rgba(69, 199, 52, 0.5) !important;
+}
+.add-task {
+    float: right;
 }
