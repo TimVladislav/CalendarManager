@@ -24,7 +24,7 @@ class TasksController < ApplicationController
       
       redirect_to @task
     else
-      render 'edit'
+      render 'new'
     end
   end
   def update

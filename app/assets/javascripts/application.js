@@ -10,8 +10,17 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require websocket_rails/main
+
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require websocket_rails/main
 //= require_tree .
+
+jQuery(function ($) {
+    var dispatcher = new WebSocketRails('localhost:3000/websocket');
+    dispatcher.on_open = function (data) {
+        console.log('Connection has been established: ', data);
+    };
+});
+

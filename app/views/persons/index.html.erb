@@ -22,7 +22,7 @@
                 <%= link_to 'show', task_path(t.task_id) %>
                 <% if Task.find(t.task_id).owner == current_user.email %>
                     <%= link_to 'edit', edit_task_path(t.task_id) %>
-                    <a class="deleteAction" style="cursor: pointer;"><span>Удалить</span></a>
+                    <a class="deleteAction" style="cursor: pointer;"><span>Delete</span></a>
                 <% end %>
             </div>
           </div>

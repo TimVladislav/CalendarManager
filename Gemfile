@@ -36,7 +36,6 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'materialize-sass'
 gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
 gem 'websocket-rails'
-gem 'tubesock'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -52,6 +51,6 @@ end
 
 group :test do
   gem 'rspec-rails'
-  gem 'factory_girl'
+  gem 'factory_girl_rails'
 end
 
