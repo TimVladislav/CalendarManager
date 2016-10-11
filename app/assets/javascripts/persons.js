@@ -7,9 +7,10 @@ jQuery(function($){
         type: "POST",
         data: { _method: 'DELETE' },
         success: function() {
-          $(current_item).fadeOut(500);
+          $(current_item).fadeOut(700);
         }
       });
     };
   });
+return false;
 });

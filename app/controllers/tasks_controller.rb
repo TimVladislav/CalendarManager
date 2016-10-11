@@ -39,7 +39,7 @@ class TasksController < ApplicationController
       p.destroy
     end
     @task.destroy
-    redirect_to '/'
+    render json: { success: true}
   end
   def share
     @u_share = params[:email]
