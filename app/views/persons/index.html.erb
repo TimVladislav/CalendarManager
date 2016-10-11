@@ -6,9 +6,9 @@
   <% @tasks.each do |t| %>
     <div class="col s12 m6">
         <% if Position.find(t.id).isnew %>
-            <div class="card green darken-3 darken-1">
+            <div class="card green darken-3 darken-1" data-task_id="<%= t.task_id %>">
         <% else %>
-           <div class="card blue-grey darken-1">
+           <div class="card blue-grey darken-1" data-task_id="<%= t.task_id %>">
         <% end %>
             <div class="card-content white-text">
                 <span class="card-title"><%= Task.find(t.task_id).title %></span>
@@ -22,7 +22,7 @@
                 <%= link_to 'show', task_path(t.task_id) %>
                 <% if Task.find(t.task_id).owner == current_user.email %>
                     <%= link_to 'edit', edit_task_path(t.task_id) %>
-                    <%= link_to 'delete', task_path(t.task_id), method: :delete, data: {confirm: 'Вы уверены, что хотите удалить эту задачу?'} %>
+                    <a class="deleteAction" href="#"><span>Удалить</span></a>
                 <% end %>
             </div>
           </div>

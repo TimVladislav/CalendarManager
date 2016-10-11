@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+
   before_filter :user_signed
   before_action :find_task_by_id, only: [:show, :edit, :update, :destroy]
   before_action :owner , only: [:edit, :update]
@@ -20,6 +21,7 @@ class TasksController < ApplicationController
     if @task.save
       #current_user.tasks << @task
       Position.create(task_id: @task.id, user_id: current_user.id, isnew: 0)
+      
       redirect_to @task
     else
       render 'edit'

@@ -9,10 +9,11 @@
 </head>
 
 <body>
+   
     <nav>
         <div class="nav-wrapper">
             <div class="container"> <a class="brand-logo" href="#">Calendar Manager</a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <ul id="nav-mobile" class="right hide-on-med-and-down tasks_list">
                     <% if user_signed_in? %>
                         <li>
                             <%= link_to 'My tasks', user_root_path %>
@@ -23,9 +24,11 @@
                         <!-- TODO: profile avatar
                        <img src=" current_user.picture " alt="" />-->
                         <li>
-                            <% if (current_user.photo.length > 1) %> <img class="nav-image" src="<%= current_user.photo %>">
-                                <% else %> <img class="nav-image" src="/default.png">
-                                    <% end %>
+                            <% if (current_user.photo.length > 1) %> 
+                                <img class="nav-image" src="<%= current_user.photo %>">
+                            <% else %> 
+                                <img class="nav-image" src="/default.png">
+                            <% end %>
                         </li>
                         <li>
                             <a href="/persons/profile">
@@ -35,14 +38,14 @@
                         <li>
                             <%= link_to 'Выйти', destroy_user_session_path, :method => :delete %>
                         </li>
-                        <% else %>
-                            <li>
-                                <%= link_to 'Войти', new_user_session_path %>
-                            </li>
-                            <li>
-                                <%= link_to 'Зарегистрироваться', new_user_registration_path %>
-                            </li>
-                            <% end %>
+                    <% else %>
+                        <li>
+                            <%= link_to 'Войти', new_user_session_path %>
+                        </li>
+                        <li>
+                            <%= link_to 'Зарегистрироваться', new_user_registration_path %>
+                        </li>
+                    <% end %>
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -50,6 +53,7 @@
     </nav>
     <div class="clearfix"></div>
     <%= yield %>
+    
 </body>
 
 </html>
