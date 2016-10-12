@@ -21,16 +21,19 @@ class FriendsController < ApplicationController
 
   def create
     if @friend_id = User.where("email = \"#{params[:friend].first.second}\"").first
-      @friend = Friend.new(friend_id: @friend_id.id)
-      if @friend.save
-        current_user.friends << @friend
-        redirect_to @friend
-      else
-        render 'edit'
+      unless Friend.where("user_id = #{current_user.id} && friend_id = #{@friend_id.id}")
+        @friend = Friend.new(friend_id: @friend_id.id)
+        if @friend.save
+          current_user.friends << @friend
+          redirect_to @friend
+        else
+          render 'edit'
+        end
       end
-    else
       redirect_to friends_path
-    end
+      else
+        redirect_to friends_path
+      end
   end
 
   def update

@@ -3,6 +3,7 @@ class PersonsController < ApplicationController
 
   def profile
     @user = current_user
+    @default = "/default.png"
   end
   def index
     @tasks = Position.where("user_id = #{current_user.id}")

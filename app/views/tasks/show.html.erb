@@ -32,7 +32,24 @@
   </div>
   <% if current_user.email == @task.owner %>
     <%= form_for :share,url: share_task_path do |t| %>
-      <input type="text" name="email" id="" value="" class="form control" placeholder="e-mail пользователя" />
+      <br />
+        <div class="input-field col s12 m6">
+            <select class="icons" name="email">
+              <option value="" disabled selected>Выберите друга</option>
+                <% @friends.each do |friend| %>
+                    <%= @fr = User.find(friend.friend_id) %>
+                    <% if @fr.photo.length < 1 %>
+                      <option value="<%= @fr.email %>" data-icon="/default.png" class="circle"><%= @fr.name %> (<%= @fr.email %>)</option>
+                    <% else %>
+                      <option value="<%= @fr.email %>" data-icon="<%= @fr.photo %>" class="circle"><%= @fr.name %> (<%= @fr.email %>)</option>
+                    <% end %>
+                <% end %>
+            </select>
+            <label></label>
+        </div>
+      <br><br>
+      
+      <!--<input type="text" name="email" id="" value="" class="form control" placeholder="e-mail пользователя" />-->
       <input type="submit" name="" id="" value="Поделиться событием" />
     <% end %>
     <br />

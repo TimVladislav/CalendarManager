@@ -4,6 +4,7 @@ class TasksController < ApplicationController
   before_action :find_task_by_id, only: [:show, :edit, :update, :destroy]
   before_action :owner , only: [:edit, :update]
   def show
+    @friends = current_user.friends
     @pos = Position.where("task_id = #{@task.id} && user_id = #{current_user.id}").first
     if @pos
       if @pos.isnew
@@ -49,8 +50,10 @@ class TasksController < ApplicationController
     @u_share = params[:email]
     @u_task = params[:id]
     if @u_share_id = User.where("email = \"#{@u_share}\"").first
-      #@u_share_id.tasks << Task.where("id = #{@u_task}")
-      Position.create(task_id: @u_task, user_id: @u_share_id.id, isnew: 1)
+      unless Position.where("task_id = #{@u_task} && user_id = #{@u_share_id.id}").first
+        #@u_share_id.tasks << Task.where("id = #{@u_task}")
+        Position.create(task_id: @u_task, user_id: @u_share_id.id, isnew: 1)
+      end
     end
     redirect_to '/'
   end
