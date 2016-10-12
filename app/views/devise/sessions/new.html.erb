@@ -3,6 +3,7 @@
 
 <%= form_for(resource, as: resource_name, :html => {:class => "new_user form-signin"}, url: session_path(resource_name)) do |f| %>
   <h2 class="form-signin-heading">Войти</h2>
+   <br>
     <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email" %>
     <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
   <% if devise_mapping.rememberable? -%>

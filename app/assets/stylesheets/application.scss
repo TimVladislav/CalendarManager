@@ -32,8 +32,13 @@ dt,
 dd,
 p,
 label,
-tr {
+tr,
+input,
+.em {
     color: aliceblue;
+}
+.but {
+    color: black;
 }
 
 .con {
@@ -110,4 +115,9 @@ tr {
 }
 .add-task {
     float: right;
+}
+input#user_email,
+input#user_password,
+.actions {
+    margin: 10px 0;
 }
