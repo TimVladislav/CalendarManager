@@ -9,26 +9,46 @@
         <div class="col-sm-8 col s8">
             <h1>Your profile</h1>
             <br />
-            <dl class="dl-horizontal"> <dt>First name:</dt>
-                <dd>
-                    <%= @user.name %>
-                </dd>
-            </dl>
-            <dl class="dl-horizontal"> <dt>Second name:</dt>
-                <dd>
-                    <%= @user.second_name %>
-                </dd>
-            </dl>
-            <dl class="dl-horizontal"> <dt>Birthday:</dt>
-                <dd>
-                    <%= @user.birthday %>
-                </dd>
-            </dl>
-            <dl class="dl-horizontal"> <dt>E-mail:</dt>
-                <dd>
-                    <%= @user.email %>
-                </dd>
-            </dl>
+            <div class="row">
+                <dl class="dl-horizontal">
+                    <div class="col s2"> <dt><span class="property">First name:</span></dt> </div>
+                    <div class="col s10">
+                        <dd>
+                            <%= @user.name %>
+                        </dd>
+                    </div>
+                </dl>
+            </div>
+            <div class="row">
+                <dl class="dl-horizontal">
+                    <div class="col s2"> <dt><span class="property">Second name:</span></dt> </div>
+                    <div class="col s10">
+                        <dd>
+                            <%= @user.second_name %>
+                        </dd>
+                    </div>
+                </dl>
+            </div>
+            <div class="row">
+                <dl class="dl-horizontal">
+                    <div class="col s2"> <dt><span class="property">Birthday:</span></dt> </div>
+                    <div class="col s10">
+                        <dd>
+                            <%= @user.birthday %>
+                        </dd>
+                    </div>
+                </dl>
+            </div>
+            <div class="row">
+                <dl class="dl-horizontal">
+                    <div class="col s2"> <dt><span class="property">E-mail:</span></dt> </div>
+                    <div class="col s10">
+                        <dd>
+                            <%= @user.email %>
+                        </dd>
+                    </div>
+                </dl>
+            </div>
         </div>
     </div>
 </div>

@@ -5,8 +5,12 @@ class TasksController < ApplicationController
   before_action :owner , only: [:edit, :update]
   def show
     @pos = Position.where("task_id = #{@task.id} && user_id = #{current_user.id}").first
-    if @pos.isnew
-      @pos.update(isnew: 0)
+    if @pos
+      if @pos.isnew
+        @pos.update(isnew: 0)
+      end
+    else
+      redirect_to '/'
     end
   end
   def new

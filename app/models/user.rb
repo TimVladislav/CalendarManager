@@ -14,6 +14,6 @@ class User < ActiveRecord::Base
   has_many :tasks, through: :positions
   has_many :friends
 
-  validates :email,
-    uniqueness: true
+  validates :email, uniqueness: true
+
 end
